@@ -1,0 +1,50 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nome</th>
+        <th>Raça</th>
+        <th>Idade</th>
+        <th>Sexo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pets" (click)="openEditModal(template, p)">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.race }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.sex }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class="modal-body">
+    <form>
+      <div class="input-group">
+        <span class="input-group-addon">Nome</span>
+        <input type="text" class="form-control" id="name" placeholder="Nome" required [(ngModel)]="selPet.name" name="name">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Raça</span>
+        <input type="text" class="form-control" id="race" placeholder="Raça" [(ngModel)]="selPet.race" name="race">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Idade</span>
+        <input type="number" class="form-control" id="age" placeholder="Idade" [(ngModel)]="selPet.age" name="age">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Sexo</span>
+        <input type="text" class="form-control" id="sex" placeholder="Sexo" [(ngModel)]="selPet.sex" name="sex">
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="updatePet();modalRef.hide()">
+        Salvar
+      </button>
+      <button type="button" class="btn btn-primary" (click)="deletePet();modalRef.hide()">Deletar</button>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-info" (click)="openModal(template)">Add pet</button>
+
+<ng-template #template>
+  <div class="modal-body">
+  <form>
+    <div class="input-group">
+      <span class="input-group-addon">Nome</span>
+      <input type="text" class="form-control" id="name" placeholder="Nome" required [(ngModel)]="pet.name" name="name">
+      <span class="input-group-addon">Raça</span>
+      <input type="text" class="form-control" id="race" placeholder="Raça" [(ngModel)]="pet.race" name="race">
+      <span class="input-group-addon">Idade</span>
+      <input type="number" class="form-control" id="age" placeholder="Idade" [(ngModel)]="pet.age" name="age">
+      <span class="input-group-addon">Sexo</span>
+      <input type="text" class="form-control" id="sex" placeholder="Sexo" [(ngModel)]="pet.sex" name="sex">
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="addPet();modalRef.hide()">
+      Add
+    </button>
+  </form>
+  </div>
+</ng-template>
