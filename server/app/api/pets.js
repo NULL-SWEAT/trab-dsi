@@ -45,12 +45,13 @@ api.modify = (req, res) => {
 	const race = req.body.race;
 	const age = req.body.age;
 	const sex = req.body.sex;
+	const id = req.body.id;
 
   const client = db.getClient();
 
   client.connect();
 
-	client.query(EDIT_PET, [name, race, age, sex], (error, pet) => {
+	client.query(EDIT_PET, [name, race, age, sex, id], (error, pet) => {
 		if (error) {
 			res.json(error);
 			return next(error);
