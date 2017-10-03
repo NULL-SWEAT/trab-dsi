@@ -10,7 +10,7 @@ const DELETE_PET = 'DELETE FROM pet WHERE id = $1';
 api.store = (req, res) => {
   const name = req.body.name;
 	const race = req.body.race;
-	const age = req.body.race;
+	const age = req.body.age;
 	const sex = req.body.sex;
 
   const client = db.getClient();
@@ -43,7 +43,7 @@ api.index = (req, res) => {
 api.modify = (req, res) => {
 	const name = req.body.name;
 	const race = req.body.race;
-	const age = req.body.race;
+	const age = req.body.age;
 	const sex = req.body.sex;
 
   const client = db.getClient();
