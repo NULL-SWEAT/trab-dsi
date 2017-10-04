@@ -56,21 +56,22 @@ api.modify = (req, res) => {
 			res.json(error);
 			return next(error);
 		} else res.status(200).json("Pet updated");
+		client.end();
 	});
-
-	client.end();
 }
 
 api.exclude = (req, res) => {
-	const id = req.param('id');
+	const id = req.params.id;
 
-	const client = getClient();
+	const client = db.getClient();
 
+	client.connect();
 	client.query(DELETE_PET, [id], (error, pet) => {
 		if (error) {
 			res.json(error);
 			return next(error);
 		} else res.status(200).json('Pet deleted');
+		client.end();
 	});
 }
 
