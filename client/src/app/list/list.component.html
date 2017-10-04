@@ -1,0 +1,80 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><strong>Cadastro Pets</strong></div>
+  <div class="panel-body">
+    <button type="button" class="btn btn-primary btn-lg" (click)="openModal(addTemplate)">Adicionar pet</button>
+    <h5>Clique em um pet para editar ou deletar:</h5>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nome</th>
+        <th>Raça</th>
+        <th>Idade</th>
+        <th>Sexo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pets" (click)="openEditModal(editTemplate, p)">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.race }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.sex }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<ng-template #editTemplate>
+  <div class="modal-body">
+    <form>
+      <div class="input-group">
+        <span class="input-group-addon">Nome</span>
+        <input type="text" class="form-control" id="name" placeholder="Nome" required [(ngModel)]="selPet.name" name="name">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Raça</span>
+        <input type="text" class="form-control" id="race" placeholder="Raça" [(ngModel)]="selPet.race" name="race">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Idade</span>
+        <input type="number" class="form-control" id="age" placeholder="Idade" [(ngModel)]="selPet.age" name="age">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Sexo</span>
+        <input type="text" class="form-control" id="sex" placeholder="Sexo" [(ngModel)]="selPet.sex" name="sex">
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="updatePet();modalRef.hide()">Salvar</button>
+      <button type="button" class="btn btn-danger" (click)="deletePet();modalRef.hide()">Deletar</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #addTemplate>
+  <div class="modal-body">
+    <form>
+      <div class="input-group">
+        <span class="input-group-addon">Nome</span>
+        <input type="text" class="form-control" id="name" placeholder="Nome" required [(ngModel)]="pet.name" name="name">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Raça</span>
+        <input type="text" class="form-control" id="race" placeholder="Raça" [(ngModel)]="pet.race" name="race">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Idade</span>
+        <input type="number" class="form-control" id="age" placeholder="Idade" [(ngModel)]="pet.age" name="age">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon">Sexo</span>
+        <input type="text" class="form-control" id="sex" placeholder="Sexo" [(ngModel)]="pet.sex" name="sex">
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="addPet();modalRef.hide()">Adicionar</button>
+    </form>
+  </div>
+</ng-template>
