@@ -6,6 +6,6 @@ module.exports = (app) => {
      .get(api.index)
      .put(api.modify);
 
-  app.route('/api/v1/pets:id')
+  app.route('/api/v1/pets/:id')
      .delete(api.exclude);
 }
